@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <style>
+            {% include "style.css" %}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            {% for title, href, entries in hierarchy %}
+                {% include "entries.html" %}
+            {% endfor %}
+        </div>
+    </body>
+</html>

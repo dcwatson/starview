@@ -1,0 +1,19 @@
+<div class="column">
+    <a class="title" href="{{ href }}">{{ title }}</a>
+    <div class="listing">
+        {% for entry in entries %}
+            {% if entry.is_dir %}
+                <div class="entry directory">
+                    <i class="folder"></i>
+                    <a href="{{ entry.href }}">{{ entry.name }}/</a>
+                </div>
+            {% else %}
+                <div class="entry file">
+                    <i class="file"></i>
+                    <a href="{{ entry.href }}">{{ entry.name }}</a>
+                    <span class="size">{{ entry.size }}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
