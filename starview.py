@@ -90,6 +90,9 @@ async def serve(request):
     if not os.path.exists(path):
         raise HTTPException(404)
     if os.path.isdir(path):
+        index_path = os.path.join(path, "index.html")
+        if os.path.exists(index_path):
+            return FileResponse(index_path)
         hierarchy = []
         selected = None
         # TODO: run this in a ThreadPoolExecutor.
