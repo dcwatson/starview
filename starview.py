@@ -47,6 +47,8 @@ def get_entries(root, parts, selected=None):
         if name.startswith(".") and not DOTFILES:
             continue
         path = os.path.join(root_path, name)
+        if not os.path.exists(path):
+            continue
         is_dir = os.path.isdir(path)
         href = MOUNT + "/".join(parts + [name])
         if is_dir:
