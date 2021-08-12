@@ -53,13 +53,17 @@ def get_entries(root, parts, selected=None):
         href = MOUNT + "/".join(parts + [name])
         if is_dir:
             href += "/"
+        try:
+            size = None if is_dir else filesize(os.path.getsize(path))
+        except OSError:
+            continue
         entries.append(
             {
                 "name": name,
                 "href": href,
                 "is_dir": is_dir,
-                "is_link": os.path.islink(path),
-                "size": None if is_dir else filesize(os.path.getsize(path)),
+                # "is_link": os.path.islink(path),
+                "size": size,
                 "selected": name == selected,
             }
         )
