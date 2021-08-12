@@ -1,9 +1,9 @@
-<div class="column">
+<div class="column{% if last %} last{% endif %}">
     <a class="title" href="{{ href }}">{{ title }}</a>
     <div class="listing">
         {% for entry in entries %}
             {% if entry.is_dir %}
-                <div class="entry directory">
+                <div class="entry directory{% if entry.selected %} selected{% endif %}">
                     <i class="folder"></i>
                     <a href="{{ entry.href }}">{{ entry.name }}/</a>
                 </div>
